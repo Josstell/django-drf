@@ -1,6 +1,6 @@
 
 from pathlib import Path
-from dotenv import load_dotenv
+from dotenv import load_dotenv  
 import os
 
 load_dotenv()
@@ -20,7 +20,7 @@ DEBUG = os.environ.get('DEBUG')
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+       'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -28,9 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # External packages
     'rest_framework',
+    'drf_spectacular',
+    
 
 
     # Internal packages
+    'apps.product'
 
 ]
 
@@ -108,5 +111,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Django DRF Ecommerce',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
 }
